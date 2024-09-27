@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 
+import 'map_location.dart';
+
 class LocationPage extends StatefulWidget {
   const LocationPage({Key? key}) : super(key: key);
 
@@ -70,6 +72,19 @@ class _LocationPageState extends State<LocationPage> {
     });
   }
 
+  _showLocationOnMap(){
+    if(_currentPosition!.latitude ==null && _currentPosition!.longitude == null){
+      // get the current location first..
+
+    } else {
+
+      Navigator.push(context, MaterialPageRoute(
+        builder: (context) => MapLocation(lat: _currentPosition!.latitude, lng :_currentPosition!.longitude ),
+      ));
+    }
+
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -86,6 +101,11 @@ class _LocationPageState extends State<LocationPage> {
               ElevatedButton(
                 onPressed: _getCurrentPosition,
                 child: const Text("Get Current Location"),
+              ),
+              const SizedBox(height: 32),
+              ElevatedButton(
+                onPressed: _showLocationOnMap,
+                child: const Text("Show Location on map"),
               )
             ],
           ),
