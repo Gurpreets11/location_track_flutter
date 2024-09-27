@@ -11,7 +11,7 @@ Here are some steps that we need to do.
 
 First add location permission in AndroidManifest.xml file
 
-   <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 
 
 To show map in application, you need to add your key in AndroidManifest file  
